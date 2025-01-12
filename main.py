@@ -12,12 +12,26 @@ def most_varied(recipes):
     for count_ingrid in chefs_hash_map.values():
         if len(count_ingrid) > max_set:
             max_set = len(count_ingrid)
-    
-          
 
+    second_max_set = 0
 
+    for ing_set in chefs_hash_map.values():
+        current_size = len(ing_set)
+        if current_size > second_max_set and current_size < max_set:
+            second_max_set = current_size
         
+    
+    for key, value in chefs_hash_map.items():
+        if len(value) == max_set:
+            ingr_tuple = (key, sorted(list(value)))
+            list_of_chefs.append(ingr_tuple)
 
+    for key, value in chefs_hash_map.items():
+        if len(value) == second_max_set:
+            ingr_tuple = (key, sorted(list(value)))
+            list_of_chefs.append(ingr_tuple)
+    
+    return(list_of_chefs)
 
 
 
@@ -31,7 +45,7 @@ recipes_1 = [
     ("Pea Soup", "Xinting", ("Peas", "Onion", "Carrot", "Chicken Stock")),
 ]
 assert most_varied(recipes_1) == [
-    ("Xinting", ["Beef", "Carrot", "Chicken Stock", "Onion", "Peas", "Tomato"]), 
+    ("Xinting", ["Beef", "Carrot", "Chicken Stock", "Onion", "Peas", "Tomato"]),
     ("Amy", ["Cheese", "Chicken Cream", "Pepper", "Tater tots"])
 ]
 
