@@ -1,6 +1,24 @@
 def most_varied(recipes):
-  # Write your solution here!
-  pass
+    chefs_hash_map = {}
+    list_of_chefs = []
+    for _, chef, ingridients in recipes:
+        if chef not in  chefs_hash_map:
+            chefs_hash_map[chef] = set(ingridients)
+        else:
+            for ingridient in ingridients:
+                chefs_hash_map[chef].add(ingridient)
+    
+    max_set = 0        
+    for count_ingrid in chefs_hash_map.values():
+        if len(count_ingrid) > max_set:
+            max_set = len(count_ingrid)
+    
+          
+
+
+        
+
+
 
 
 recipes_1 = [
